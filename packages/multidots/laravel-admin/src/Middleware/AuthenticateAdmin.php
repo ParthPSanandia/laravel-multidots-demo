@@ -17,6 +17,7 @@ class AuthenticateAdmin
      */
     public function handle($request, Closure $next)
     {
+//        echo '<pre>'; print_r('AuthenticateAdmin'); die;
         // If request does not comes from logged in administratore
         // then he shall be redirected to Login page
         if (!Auth::guard('admin')->check()) {

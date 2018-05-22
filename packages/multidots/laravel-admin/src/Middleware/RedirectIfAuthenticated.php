@@ -18,6 +18,7 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+//        echo '<pre>'; print_r('RedirectIfAuthenticated'); die;
         if (Auth::guard($guard)->check()) {
             return redirect()->route('home');
         }

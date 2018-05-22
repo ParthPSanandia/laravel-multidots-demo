@@ -20,12 +20,14 @@ class Permission
      * @param type $permissions
      * @return mixed
      */
-    public function handle($request, Closure $next, $permissions)
-    {
+    public function handle($request, Closure $next, $permissions = null)
+    {        
         if (!Auth::guard('admin')->check()) {
             return response()->view('admin.errors.401');
         }
-        $permissions = is_array($permissions) ? $permissions : explode('|', $permissions);
+        if (!empty($permissions)) {
+            $permissions = is_array($permissions) ? $permissions : explode('|', $permissions);
+        }
 
         if (Permissions::checkPermission($permissions)) {
             return $next($request);

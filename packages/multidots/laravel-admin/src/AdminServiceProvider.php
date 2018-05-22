@@ -20,7 +20,7 @@ class AdminServiceProvider extends ServiceProvider
      */
     protected $routeMiddleware = [
         'admin.auth' => \Multidots\Admin\Middleware\AuthenticateAdmin::class,
-//        'admin.permission' => \Multidots\Admin\Middleware\Permission::class,
+        'permission' => \Multidots\Admin\Middleware\Permission::class,
         'admin.redirect-authenticate' => \Multidots\Admin\Middleware\RedirectIfAuthenticated::class,
         'admin.not-authenticate' => \Multidots\Admin\Middleware\RedirectIfNotAdmin::class,
         \Multidots\Admin\Middleware\RolePermission::class,
@@ -38,7 +38,7 @@ class AdminServiceProvider extends ServiceProvider
             'admin.redirect-authenticate',
             'admin.not-authenticate',
         ],
-//        ['web' => \Multidots\Admin\Middleware\RolePermission::class]
+//        ['web' => \Multidots\Admin\Middleware\Permission::class]
     ];
 
     /**
