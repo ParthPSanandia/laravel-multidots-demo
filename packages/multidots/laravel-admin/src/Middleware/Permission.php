@@ -20,7 +20,7 @@ class Permission
      * @param type $permissions
      * @return mixed
      */
-    public function handle($request, Closure $next, $permissions = null)
+    public function handle($request, Closure $next, $permissions)
     {
         if (!Auth::guard('admin')->check()) {
             return response()->view('admin.errors.401');
@@ -30,7 +30,7 @@ class Permission
         if (Permissions::checkPermission($permissions)) {
             return $next($request);
         }
-        
+
         return response()->view('admin.errors.401');
     }
 
