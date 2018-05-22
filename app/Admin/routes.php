@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Admin::registerAuthRoutes();
+//Admin::registerAuthRoutes();
 
 Route::group(['namespace' => config('admin.route.namespace'), 'prefix' => config('admin.route.prefix')], function () {
     Route::get('/demo', function () {
