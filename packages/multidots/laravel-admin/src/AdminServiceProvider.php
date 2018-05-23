@@ -11,6 +11,7 @@ class AdminServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
+        'Multidots\Admin\Console\Admin',
     ];
 
     /**
@@ -57,7 +58,7 @@ class AdminServiceProvider extends ServiceProvider
             $this->publishes([__DIR__ . '/../resources/views' => resource_path('views/admin')], 'laravel-admin-views');
             $this->publishes([__DIR__ . '/../database/migrations' => database_path('migrations')], 'laravel-admin-migrations');
             $this->publishes([__DIR__ . '/../database/seeds' => database_path('seeds')], 'laravel-admin-seeds');
-            $this->publishes([__DIR__ . '/../multidots/laravel-admin' => public_path('public')], 'laravel-admin-assets');
+            $this->publishes([__DIR__ . '/../public' => public_path('multidots/laravel-admin')], 'laravel-admin-assets');
         }
     }
 
@@ -81,6 +82,7 @@ class AdminServiceProvider extends ServiceProvider
         $this->loadAdminAuthConfig();
 
         $this->registerRouteMiddleware();
+        $this->commands($this->commands);
     }
 
     /**
